@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Study Planner</title>
+    <meta name="description" content="Comprehensive academic task, schedule, exam preparation, and study habit planning dashboard for students." />
+    <meta property="og:title" content="Smart Study Planner" />
+    <meta property="og:description" content="Comprehensive academic task, schedule, exam preparation, and study habit planning dashboard for students." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased h-screen overflow-hidden flex flex-col">
+
+    <!-- ========================================================
+         TOP PRESENTATION & MODE SWITCHER HEADER
+         (Modularized in /src/views/menuBars.js)
+         ======================================================== -->
+    <header id="main-header" class="h-14 bg-white border-b border-slate-200/80 pl-2.5 sm:pl-4 pr-4 sm:pr-6 flex items-center justify-between z-30 shrink-0 sticky top-0"></header>
+
+    <!-- Mobile Backdrop for Sidebar -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-35 md:hidden transition-opacity"></div>
+
+    <!-- ========================================================
+         MAIN APP LAYOUT (Sidebar + View Panels)
+         ======================================================== -->
+    <div id="app-layout" class="flex-1 flex flex-col md:flex-row overflow-hidden relative h-[calc(100vh-3.5rem)]">
+      <!-- SIDEBAR (Modularized in /src/views/menuBars.js) -->
+      <aside id="app-sidebar" class="transition-all duration-300 hidden md:flex md:w-56 lg:w-60 bg-white border-r border-slate-200/80 flex-col justify-between shrink-0 select-none z-30 h-full overflow-y-auto"></aside>
+
+      <!-- ========================================================
+           VIEW PANELS CONTAINER
+           (Modularized into separate page files in /src/views/pages/)
+           ======================================================== -->
+      <main id="main-content-container" class="flex-1 overflow-y-auto bg-slate-50 h-full"></main>
+    </div>
+
+    <!-- ========================================================
+         MODULAR VIEW LAYOUTS & CONTAINERS
+         (Separated in /src/views/landingPage.js, signupPage.js, onboardingPage.js, modals.js)
+         ======================================================== -->
+
+    <!-- Landing Page Layout -->
+    <div id="landing-layout" class="hidden flex-1 overflow-y-auto bg-white flex flex-col"></div>
+
+    <!-- Onboarding Wizard Layout -->
+    <div id="onboarding-layout" class="hidden flex-1 overflow-y-auto bg-slate-100/50 py-10 px-4 flex items-center justify-center"></div>
+
+    <!-- Authentication Layout (Login, Sign Up & Forgot Password) -->
+    <div id="auth-layout" class="hidden flex-1 overflow-y-auto bg-white flex flex-col md:flex-row"></div>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- GLOBAL PROFILE PHOTO FILE INPUT -->
+    <input type="file" id="profile-photo-input" accept="image/png,image/jpeg,image/webp,image/gif" class="hidden" onchange="handleProfilePhotoSelected(event)">
+
+    <!-- SCRIPTS -->
+    <script src="./src/app.offline.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+  </body>
+</html>

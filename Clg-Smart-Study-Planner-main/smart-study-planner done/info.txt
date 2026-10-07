@@ -1,0 +1,6 @@
+"This project is built using pure HTML5, CSS3, and modern Vanilla JavaScript (ES6 Modules) without heavy framework dependencies:
+index.html: The main page skeleton and layout container.
+src/style.css: Design tokens, scrollbar styling, and Tailwind CSS utility classes.
+src/controllers/: Handles user interactions, task filters, exam schedules, and GPA calculation logic.
+src/views/: Clean, modular UI components separated into individual page files.
+src/data/state.js: Keeps state persistent using the browser's native LocalStorage API so tasks and schedules save automatically.*"

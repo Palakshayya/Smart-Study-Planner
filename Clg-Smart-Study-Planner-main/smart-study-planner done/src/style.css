@@ -1,0 +1,144 @@
+/* 
+ * SMART STUDY PLANNER - CUSTOM PURE CSS ENHANCEMENTS
+ * Carefully structured for backend & frontend developers.
+ */
+
+:root {
+  --primary: #5551FF;
+  --primary-hover: #4338CA;
+  --primary-light: #EEF2FF;
+  --slate-dark: #0F172A;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #F8FAFC;
+  color: #1E293B;
+}
+
+/* Lock navigation menu & layout so only page content scrolls */
+#app-layout {
+  height: calc(100vh - 3.5rem);
+  overflow: hidden;
+}
+
+#app-sidebar {
+  height: 100%;
+  overflow-y: auto;
+}
+
+main {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Modal transitions */
+.modal-backdrop {
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.modal-backdrop.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-backdrop:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* View transitions */
+.view-panel {
+  display: none;
+  animation: fadeIn 0.2s ease-in-out;
+}
+.view-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Circular Gauge Animation */
+.gauge-circle {
+  transition: stroke-dasharray 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active Nav state */
+.nav-item.active {
+  background-color: #5551FF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px 0 rgba(85, 81, 255, 0.3);
+}
+.nav-item.active svg {
+  color: #FFFFFF !important;
+}
+
+/* Filter tab active state */
+.filter-btn.active {
+  background-color: #5551FF !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+}
+
+/* Hide presentation main-header when landing page layout is active */
+body:has(#landing-layout:not(.hidden)) #main-header {
+  display: none !important;
+}
+
+/* Ensure landing page brand Planner tag is placed cleanly below Smart Study */
+#landing-layout header > div:first-child > div:nth-of-type(2) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+}
+#landing-layout header > div:first-child > div:nth-of-type(2) > span:nth-of-type(2),
+#landing-brand-planner {
+  display: block !important;
+  margin-top: 3px !important;
+  width: fit-content !important;
+}
+
+/* Hide sidebar toggle menu button on login/auth pages and onboarding */
+body:has(#auth-layout:not(.hidden)) #sidebar-toggle-btn,
+body:has(#onboarding-layout:not(.hidden)) #sidebar-toggle-btn,
+body:has(#landing-layout:not(.hidden)) #sidebar-toggle-btn {
+  display: none !important;
+}
+
+/* Remove left border on branding when sidebar toggle button is hidden */
+body:has(#auth-layout:not(.hidden)) #main-header div[onclick="switchMode('app')"],
+body:has(#onboarding-layout:not(.hidden)) #main-header div[onclick="switchMode('app')"] {
+  border-left: none !important;
+  padding-left: 0 !important;
+}
